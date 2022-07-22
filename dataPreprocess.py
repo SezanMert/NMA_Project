@@ -34,9 +34,11 @@ for subject in np.arange(alldat.shape[0]):
                 df.loc[idx] = {'Subject': subject,
                                'Trial': trial_num,
                                'Brodmann Area': alldat[subject][r_vs_i]['Brodmann_Area'][ch_num],
+                               'No_BA': int(alldat[subject][r_vs_i]['Brodmann_Area'][ch_num][14:]),
                                'Movement Type': alldat[subject][r_vs_i]['stim_id'][trial_num],
                                'Re vs Im': r_vs_i,
-                               'V': [alldat[subject][r_vs_i]['V'][t_on:t_off][:, ch_num]]}
+                               'V': alldat[subject][r_vs_i]['V'][t_on:t_off][:, ch_num],
+                               'scale_uv': alldat[subject][r_vs_i]['scale_uv'][ch_num]}
 
                 # increment the index number to put the upcoming data to the next row
                 idx += 1
